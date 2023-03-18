@@ -127,22 +127,67 @@ class TournamentModel {
                   'tournamentInfo15'.tr,
                   style: const TextStyle(fontFamily: josefinSansSemiBold, fontSize: 18, color: Colors.white),
                 ),
-          messageText: Text(
-            "${responseJson["code"]}".tr,
-            style: const TextStyle(fontFamily: josefinSansRegular, fontSize: 16, color: Colors.white),
-          ),
-          mainButton: TextButton(
-            onPressed: () {
-              Get.back();
-              Clipboard.setData(ClipboardData(text: responseJson['code'].toString())).then((value) {
-                showSnackBar('copySucces', 'copySuccesSubtitle', Colors.green);
-              });
-            },
-            child: const Icon(
-              Icons.copy_all,
-              color: Colors.black,
-              size: 30,
-            ),
+          messageText: Column(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'tournamentInfo15'.tr,
+                    style: const TextStyle(fontFamily: josefinSansSemiBold, fontSize: 18, color: Colors.white),
+                  ),
+                  Text(
+                    "${responseJson["code"]}".tr,
+                    style: const TextStyle(fontFamily: josefinSansRegular, fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                      Clipboard.setData(ClipboardData(text: responseJson['code'].toString())).then((value) {
+                        showSnackBar('copySucces', 'copySuccesSubtitle', Colors.green);
+                      });
+                    },
+                    child: const Icon(
+                      Icons.copy_all,
+                      color: Colors.black,
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'lobid'.tr,
+                    style: const TextStyle(fontFamily: josefinSansSemiBold, fontSize: 18, color: Colors.white),
+                  ),
+                  Text(
+                    "${responseJson["lobb_id"]}".tr,
+                    style: const TextStyle(fontFamily: josefinSansRegular, fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                      Clipboard.setData(ClipboardData(text: responseJson['lobb_id'].toString())).then((value) {
+                        showSnackBar('copySucces', 'copySuccesSubtitle', Colors.green);
+                      });
+                    },
+                    child: const Icon(
+                      Icons.copy_all,
+                      color: Colors.black,
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: kPrimaryColor,

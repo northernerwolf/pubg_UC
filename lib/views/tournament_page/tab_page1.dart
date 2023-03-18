@@ -85,6 +85,7 @@ class TabPage1 extends StatelessWidget {
                             print('rgregegegregege');
                             print(model.id.toString());
                             TournamentModel().checkStatus(tournamentID: model.id!, value: true);
+
                             //  participateTournament(id: model.id!, tournamentType: tournamentType, price: price);
                           }
                         } else {

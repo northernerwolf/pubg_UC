@@ -184,6 +184,7 @@ class MyTranslations extends Translations {
           'tournamentInfo13': 'Şu wagtlykça bu turnira hiç kim gatnaşanok',
           'tournamentInfo14': 'Ýalňyşlyk ýüze çykdy täzeden synanşyň',
           'tournamentInfo15': 'Kody',
+          'lobid': 'LobId',
           'tournamentInfo16': 'Garaşmagyňyzy haýyş edýaris Turnir başlamagyna 10 minut galanda görkeziler',
           'tournamentInfo17': 'Üstünlikli goşuldyňyz',
           'tournamentInfo18': 'Goşuldyňyz',
@@ -254,6 +255,7 @@ class MyTranslations extends Translations {
           'points': 'Точки',
           'pointsFromTurnir': 'Очки с турнира',
           'referalKod': 'Реферальный код :',
+          'lobid': 'LobId',
           //
           'blokedTitle': 'Заблокировано',
           'blokedSubtitle': 'Вы были заблокированы администратором за нарушение правил программы.\nПожалуйста, свяжитесь с администратором, чтобы разблокировать',
