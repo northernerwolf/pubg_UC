@@ -5,7 +5,25 @@ class EmptyUsersCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return
+        // Expanded(
+        //   child: Container(
+        //     height: Get.size.height,
+        //     decoration: BoxDecoration(
+        //       color: kPrimaryColorBlack.withOpacity(0.4),
+        //       borderRadius: borderRadius10,
+        //     ),
+        //     margin: const EdgeInsets.only(left: 8, top: 4, bottom: 12, right: 12),
+        //     padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12, top: 4),
+        //     child: Icon(
+        //       CupertinoIcons.person_alt_circle,
+        //       color: Colors.grey,
+        //     ),
+        //   ),
+        // );
+        Card(
+      color: kPrimaryColorBlack,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15)), side: BorderSide(width: 1, color: Colors.black26)),
       child: Row(
         children: [
           Padding(

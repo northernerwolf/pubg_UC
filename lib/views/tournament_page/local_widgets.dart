@@ -154,7 +154,7 @@ ListTile tab3PageTypeSolo({required int index, required TournamentModel model, r
   );
 }
 
-Container type3PageTypeDuo(int index) {
+Container type3PageTypeDuo({required int index, required TournamentModel model, required bool finised}) {
   return Container(
     height: 250,
     width: Get.size.width,
@@ -180,7 +180,7 @@ Container type3PageTypeDuo(int index) {
   );
 }
 
-Container type3PageSquad(int index) {
+Container type3PageSquad({required int index, required TournamentModel model, required bool finised}) {
   return Container(
     height: 400,
     width: Get.size.width,

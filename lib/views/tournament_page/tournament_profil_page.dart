@@ -88,13 +88,14 @@ class _TournamentProfilPageState extends State<TournamentProfilPage> {
                       ? Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Center(
-                            child: Text('tournamentInfo13'),
+                            child: Text('tournamentInfo13'.tr),
                           ),
                         )
                       : TabPage3(
                           tournamentType: widget.tournamentType,
                           finised: widget.finised,
                           model: snapshot.data!,
+                          teamUsers: TeamUsers(),
                         ),
                 ],
               );

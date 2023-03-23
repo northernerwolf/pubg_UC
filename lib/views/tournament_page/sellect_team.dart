@@ -4,6 +4,8 @@ import 'package:game_app/models/tournament_model.dart';
 import 'package:game_app/views/cards/card_teams_widget.dart';
 import 'package:game_app/views/constants/index.dart';
 
+import 'new_tournamet_page.dart';
+
 class SellctTeam extends StatefulWidget {
   TournamentModel turnir;
   SellctTeam({super.key, required this.turnir});
@@ -29,7 +31,9 @@ class _SellctTeamState extends State<SellctTeam> {
       Timer(
         Duration(seconds: 3),
         () {
-          Navigator.of(context).pop();
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => NewTournamentPage()), (route) => false);
+
+          // Navigator.of(context).pop();
         },
       );
     });
@@ -37,6 +41,7 @@ class _SellctTeamState extends State<SellctTeam> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.turnir.teams!.length);
     return Scaffold(
       appBar: AppBar(
         title: Text('Teams'),
@@ -52,7 +57,7 @@ class _SellctTeamState extends State<SellctTeam> {
                 // height: 400,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: CardTeansAll(
-                    team: widget.turnir.teams![index],
+                    teams: widget.turnir.teams![index],
                     selectedTeam: selectedTeam,
                     selectTeam: (int id) {
                       setState(() {

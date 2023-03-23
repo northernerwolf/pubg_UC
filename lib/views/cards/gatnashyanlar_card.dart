@@ -2,17 +2,17 @@ import 'package:game_app/views/constants/index.dart';
 
 import '../../models/tournament_model.dart';
 
-class TeamUserCard extends StatefulWidget {
+class GatnashyanlarCard extends StatefulWidget {
   // late Teams team;
   late TeamUsers teamUsers;
   late String turnirType;
-  TeamUserCard({required this.teamUsers});
+  GatnashyanlarCard({required this.teamUsers});
 
   @override
-  State<TeamUserCard> createState() => _TeamUserCardState();
+  State<GatnashyanlarCard> createState() => _GatnashyanlarCardState();
 }
 
-class _TeamUserCardState extends State<TeamUserCard> {
+class _GatnashyanlarCardState extends State<GatnashyanlarCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -37,22 +37,21 @@ class _TeamUserCardState extends State<TeamUserCard> {
             children: [
               Row(
                 children: [
-                  Text('Pubg user name: '),
                   Text(widget.teamUsers.user!.nickname.toString()),
                 ],
               ),
               SizedBox(
                 height: 10,
               ),
-              Row(
-                children: [
-                  Text('Pubg id:'),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text(widget.teamUsers.user!.pubgId.toString()),
-                ],
-              )
+              // Row(
+              //   children: [
+              //     Text('Pubg id:'),
+              //     SizedBox(
+              //       width: 5,
+              //     ),
+              //     Text(widget.teamUsers.user!.pubgId.toString()),
+              //   ],
+              // )
             ],
           )
         ],

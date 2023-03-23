@@ -37,19 +37,30 @@ class _TabbarPage1State extends State<TabbarPage1> {
           ? showDialog(
               context: context,
               builder: (ctxt) => new AlertDialog(
+                    backgroundColor: kPrimaryColorBlack,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
                     title: Container(
-                        child: Column(
-                      children: [
-                        Text('Ünus Beriň!'),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          data['text_three'],
-                          style: TextStyle(fontSize: 20, color: Colors.red),
-                        ),
-                      ],
-                    )),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20, top: 20),
+                          child: Column(
+                            children: [
+                              Text('Ünus Beriň!'),
+                              Container(
+                                color: Colors.white,
+                                height: 1,
+                                width: 115,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                data['text_three'],
+                                style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.normal, fontFamily: josefinSansRegular),
+                              ),
+                            ],
+                          ),
+                        )),
                   ))
           : null;
 

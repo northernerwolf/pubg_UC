@@ -58,7 +58,7 @@ class _AccountProfilPageState extends State<AccountProfilPage> {
                       : ListView.builder(
                           shrinkWrap: true,
                           physics: const BouncingScrollPhysics(),
-                          itemCount: snapshot.data!.videos!.length,
+                          itemCount: snapshot.data!.videos?.length,
                           itemBuilder: (BuildContext context, int index) {
                             return VideoCard(
                               image: '$serverURL${snapshot.data!.videos![index].poster}',
