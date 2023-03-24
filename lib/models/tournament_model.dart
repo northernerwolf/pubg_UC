@@ -342,11 +342,13 @@ class ParticipatedUsers {
   final int? id;
   final int? turnir;
   final int? user;
+  final int team;
   final String? userImage;
   final String? userName;
-  ParticipatedUsers({this.id, this.account_location_ru, this.account_location_tm, this.userImage, this.userName, this.created_date, this.user, this.turnir});
+  ParticipatedUsers({required this.team, this.id, this.account_location_ru, this.account_location_tm, this.userImage, this.userName, this.created_date, this.user, this.turnir});
 
   factory ParticipatedUsers.fromJson(Map<String, dynamic> json) {
-    return ParticipatedUsers(id: json['id'], created_date: json['created_date'], user: json['user'], turnir: json['turnir'], userImage: json['account_image'], userName: json['account_nickname'], account_location_tm: json['account_location_tm'], account_location_ru: json['account_location_ru']);
+    return ParticipatedUsers(
+        team: json['team'], id: json['id'], created_date: json['created_date'], user: json['user'], turnir: json['turnir'], userImage: json['account_image'], userName: json['account_nickname'], account_location_tm: json['account_location_tm'], account_location_ru: json['account_location_ru']);
   }
 }

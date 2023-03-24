@@ -34,6 +34,7 @@ class EmptyUsersCard extends StatelessWidget {
                 width: 60,
                 height: 60,
                 color: Colors.grey,
+                child: Image.asset('assets/icons/avable2.png', fit: BoxFit.cover),
               ),
             ),
           ),

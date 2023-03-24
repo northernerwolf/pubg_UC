@@ -82,14 +82,14 @@ class _TabbarPage1State extends State<TabbarPage1> {
     return ListView(
       shrinkWrap: true,
       children: [
-        infoPartText('accountDetaile1', widget.model.user!.pubgUsername ?? '', false),
-        infoPartText('accountDetaile2', widget.model.user!.pubgId ?? '', false),
+        infoPartText('accountDetaile1', widget.model.pubgUserName ?? '', false),
+        infoPartText('accountDetaile2', widget.model.pubgID ?? '', false),
         infoPartText('accountDetaile5', widget.model.price!, true),
-        infoPartText('accountDetaile6', widget.model.user!.createdDate!.substring(0, 10), false),
-        infoPartText('verifed', widget.model.user!.verified == true ? 'yes' : 'no', false),
-        infoPartText('points', widget.model.user!.points.toString(), false),
-        infoPartText('pointsFromTurnir', widget.model.user!.pointsFromTurnir!.toString(), false),
-        infoPartText('referalKod', widget.model.user!.referalCode!, false),
+        infoPartText('accountDetaile6', widget.model.createdAt!.substring(0, 10), false),
+        // infoPartText('verifed', widget.model.user!.verified == true ? 'yes' : 'no', false),
+        // infoPartText('points', widget.model.user!.points.toString(), false),
+        infoPartText('pointsFromTurnir', widget.model.pubgType!.toString(), false),
+        // infoPartText('referalKod', widget.model.user!.referalCode!, false),
         Padding(
           padding: const EdgeInsets.only(left: 20, bottom: 25, top: 15),
           child: Text(
@@ -100,8 +100,8 @@ class _TabbarPage1State extends State<TabbarPage1> {
             style: const TextStyle(color: Colors.white, fontFamily: josefinSansRegular, fontSize: 20),
           ),
         ),
-        infoPartText('accountDetaile7', "${widget.model.user!.firsName ?? ""} ${widget.model.user!.lastName ?? ""}", false),
-        infoPartText('accountDetaile9', widget.model.user!.phone ?? '', false),
+        infoPartText('accountDetaile7', widget.model.user!.firsName ?? '', false),
+        infoPartText('accountDetaile9', widget.model.title ?? '', false),
       ],
     );
   }

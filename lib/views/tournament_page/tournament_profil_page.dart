@@ -95,7 +95,7 @@ class _TournamentProfilPageState extends State<TournamentProfilPage> {
                           tournamentType: widget.tournamentType,
                           finised: widget.finised,
                           model: snapshot.data!,
-                          teamUsers: TeamUsers(),
+                          teams: TeamUsers(),
                         ),
                 ],
               );

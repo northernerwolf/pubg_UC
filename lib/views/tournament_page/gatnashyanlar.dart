@@ -5,10 +5,15 @@ import '../constants/index.dart';
 
 class Gatnashyanlatr extends StatefulWidget {
   late Teams teams;
-
-  late TeamUsers teamUsers;
+  ParticipatedUsers participatedUsers;
+  late Teams teamUsers;
   late int usersCount;
-  Gatnashyanlatr({required this.teams, required this.usersCount});
+
+  Gatnashyanlatr({
+    required this.participatedUsers,
+    required this.teams,
+    required this.usersCount,
+  });
 
   @override
   State<Gatnashyanlatr> createState() => _GatnashyanlatrState();
@@ -33,7 +38,7 @@ class _GatnashyanlatrState extends State<Gatnashyanlatr> {
                   style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  widget.teams.number.toString(),
+                  widget.participatedUsers.team == widget.teams.id ? widget.teams.number.toString() : widget.teams.number.toString(),
                   style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ],
