@@ -55,7 +55,7 @@ class _SettingsState extends State<Settings> {
             name: 'versia',
             onTap: () {},
             icon: const Text(
-              '1.0.0',
+              '1.0.1',
               style: TextStyle(color: kPrimaryColor, fontFamily: josefinSansMedium),
             ),
           ),

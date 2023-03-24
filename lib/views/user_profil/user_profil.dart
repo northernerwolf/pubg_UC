@@ -134,17 +134,20 @@ class _UserProfilState extends State<UserProfil> {
                       },
                       icon: IconlyLight.profile,
                     ),
-                    ProfilButton(
-                      name: 'loginWithGmail',
-                      onTap: () {
-                        Get.to(
-                          () => const TabBarViewPage(
-                            loginType: true,
-                          ),
-                        );
-                      },
-                      icon: Icons.mail_outline,
-                    ),
+                    SizedBox(
+                      height: 20,
+                    )
+                    // ProfilButton(
+                    //   name: 'loginWithGmail',
+                    //   onTap: () {
+                    //     Get.to(
+                    //       () => const TabBarViewPage(
+                    //         loginType: true,
+                    //       ),
+                    //     );
+                    //   },
+                    //   icon: Icons.mail_outline,
+                    // ),
                   ],
                 ),
                 name: 'signUp',

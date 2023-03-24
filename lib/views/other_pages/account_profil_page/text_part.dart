@@ -21,11 +21,11 @@ class CustomFlexibleSpace extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15, top: 20, bottom: 20),
             child: Text(
-              model.user!.bio ?? '',
+              model.desc ?? '',
               maxLines: 5,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white, fontFamily: josefinSansRegular, fontSize: 16),
+              style: const TextStyle(color: Colors.white, fontFamily: josefinSansRegular, fontSize: 20),
             ),
           ),
           Container(
@@ -125,33 +125,33 @@ class CustomFlexibleSpace extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 15),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "${model.user!.firsName ?? ""} ${model.user!.lastName ?? ""}",
-                            textAlign: TextAlign.start,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold, fontSize: 20),
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            model.user!.phone ?? '',
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(color: Colors.grey, fontFamily: josefinSansRegular, fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                  // Expanded(
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.only(bottom: 15),
+                  //     child: Column(
+                  //       mainAxisSize: MainAxisSize.min,
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Text(
+                  //           "model.user!.firsName ?? ",
+                  //           textAlign: TextAlign.start,
+                  //           maxLines: 2,
+                  //           overflow: TextOverflow.ellipsis,
+                  //           style: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold, fontSize: 20),
+                  //         ),
+                  //         const SizedBox(
+                  //           height: 4,
+                  //         ),
+                  //         Text(
+                  //           model.user!.phone ?? '',
+                  //           maxLines: 2,
+                  //           overflow: TextOverflow.ellipsis,
+                  //           style: const TextStyle(color: Colors.grey, fontFamily: josefinSansRegular, fontSize: 16),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

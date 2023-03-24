@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:game_app/views/constants/index.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../models/get_posts_model.dart';
 import 'package:http/http.dart' as http;
@@ -88,7 +89,7 @@ class _TabbarPage1State extends State<TabbarPage1> {
         infoPartText('accountDetaile6', widget.model.createdAt!.substring(0, 10), false),
         // infoPartText('verifed', widget.model.user!.verified == true ? 'yes' : 'no', false),
         // infoPartText('points', widget.model.user!.points.toString(), false),
-        infoPartText('pointsFromTurnir', widget.model.pubgType!.toString(), false),
+        // infoPartText('pointsFromTurnir', widget.model.pubgType!.toString(), false),
         // infoPartText('referalKod', widget.model.user!.referalCode!, false),
         Padding(
           padding: const EdgeInsets.only(left: 20, bottom: 25, top: 15),
@@ -100,8 +101,17 @@ class _TabbarPage1State extends State<TabbarPage1> {
             style: const TextStyle(color: Colors.white, fontFamily: josefinSansRegular, fontSize: 20),
           ),
         ),
-        infoPartText('accountDetaile7', widget.model.user!.firsName ?? '', false),
+        // infoPartText('accountDetaile7', widget.model.user!.firsName ?? '', false),
         infoPartText('accountDetaile9', widget.model.title ?? '', false),
+        Padding(
+          padding: const EdgeInsets.only(left: 25, right: 25),
+          child: AgreeButton(
+            name: 'popUP1',
+            onTap: () async {
+              await launch('tel://${widget.model.title}');
+            },
+          ),
+        ),
       ],
     );
   }

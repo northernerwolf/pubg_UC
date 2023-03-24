@@ -93,9 +93,9 @@ class _AccountProfilPageState extends State<AccountProfilPage> {
           ),
         ),
       ),
-      actions: [
-        moreInfoButton(model.user!),
-      ],
+      // actions: [
+      //   moreInfoButton(model.user!),
+      // ],
       pinned: true,
       floating: true,
       systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
