@@ -9,12 +9,14 @@ class TabPage3 extends StatefulWidget {
   final int tournamentType;
   final bool finised;
   final TeamUsers teams;
+  final int tournamentId;
 
   const TabPage3({
     required this.model,
     required this.finised,
     required this.tournamentType,
     required this.teams,
+    required this.tournamentId,
     Key? key,
   }) : super(key: key);
 
@@ -23,25 +25,28 @@ class TabPage3 extends StatefulWidget {
 }
 
 class _TabPage3State extends State<TabPage3> {
-  List<Object> team_users = [];
+  List<Teams> team_users = [];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    for (var e in widget.model.teams!) {
+      if (e.teamUsers!.length > 0) team_users.add(e);
+    }
+    print(team_users);
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: widget.model.participated_users!.length,
+      itemCount: team_users.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
           width: double.infinity,
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           child: Gatnashyanlatr(
-              participatedUsers: widget.model.participated_users![index],
-              teams: widget.model.teams![index],
+              teams: team_users[index],
               usersCount: widget.model.type! == "solo"
                   ? 1
                   : widget.model.type! == "duo"
