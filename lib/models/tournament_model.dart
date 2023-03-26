@@ -317,8 +317,10 @@ class Winners {
   final String? account_location_tm;
   final String? account_location_ru;
   final String? created_date;
+  final int? team_number;
   final int? award;
-  Winners({this.id, this.award, this.account_image, this.account_location_ru, this.account_location_tm, this.account_nickname, this.created_date, this.turnir, this.user});
+  final List<TeamUsers>? teamUsers;
+  Winners({this.teamUsers, this.id, this.team_number, this.award, this.account_image, this.account_location_ru, this.account_location_tm, this.account_nickname, this.created_date, this.turnir, this.user});
 
   factory Winners.fromJson(Map<String, dynamic> json) {
     return Winners(
@@ -331,6 +333,8 @@ class Winners {
       account_location_tm: json['account_location_tm'] ?? '',
       account_nickname: json['account_nickname'] ?? '',
       created_date: json['created_date'] ?? '',
+      team_number: json['team_number'] ?? 0,
+      teamUsers: ((json['teamusers'] ?? []) as List).map((json) => TeamUsers.fromJson(json)).toList(),
     );
   }
 }

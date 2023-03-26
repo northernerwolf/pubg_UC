@@ -1,25 +1,24 @@
+import 'package:flutter/material.dart';
+
 import '../../models/tournament_model.dart';
 import '../cards/empty_users_card.dart';
 import '../cards/gatnashyanlar_card.dart';
-import '../constants/index.dart';
 
-class Gatnashyanlatr extends StatefulWidget {
-  late Teams teams;
+class WinnersAll extends StatefulWidget {
+  late Winners winners;
   late Awards awards;
+  TeamUsers team_users;
 
   late Teams teamUsers;
   late int usersCount;
 
-  Gatnashyanlatr({
-    required this.teams,
-    required this.usersCount,
-  });
+  WinnersAll({required this.winners, required this.usersCount, required this.team_users});
 
   @override
-  State<Gatnashyanlatr> createState() => _GatnashyanlatrState();
+  State<WinnersAll> createState() => _WinnersAllState();
 }
 
-class _GatnashyanlatrState extends State<Gatnashyanlatr> {
+class _WinnersAllState extends State<WinnersAll> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -38,7 +37,7 @@ class _GatnashyanlatrState extends State<Gatnashyanlatr> {
                   style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  widget.teams.number.toString(),
+                  widget.winners.team_number.toString(),
                   style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -50,7 +49,7 @@ class _GatnashyanlatrState extends State<Gatnashyanlatr> {
                 // height: 310,
                 width: double.infinity,
                 child: Column(
-                  children: [for (var i = 0; i < widget.usersCount; i++) widget.teams.teamUsers!.length >= i + 1 ? GatnashyanlarCard(teamUsers: widget.teams.teamUsers![i]) : EmptyUsersCard()],
+                  children: [for (var i = 0; i < widget.usersCount; i++) widget.winners.teamUsers!.length >= i + 1 ? GatnashyanlarCard(teamUsers: widget.winners.teamUsers![i]) : EmptyUsersCard()],
                 )),
           )
         ],

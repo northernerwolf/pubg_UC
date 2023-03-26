@@ -36,13 +36,13 @@ class TabPage1 extends StatelessWidget {
                     top: 10,
                   ),
                   child: Text(
-                    model.title!,
+                    model.title.toString(),
                     style: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold, fontSize: 26),
                   ),
                 ),
                 twoText(name1: 'tournamentInfo5'.tr, name2: model.mode ?? ''),
                 twoText(name1: 'tournamentInfo6'.tr, name2: model.map ?? ''),
-                twoText(name1: 'tournamentInfo7'.tr, name2: model.start_date!.substring(0, 10)),
+                twoText(name1: 'tournamentInfo7'.tr, name2: model.start_date.toString()),
                 twoText(name1: 'tournamentInfo8'.tr, name2: finised ? 'tournamentInfo9'.tr : 'tournamentInfo10'.tr),
                 const SizedBox(
                   height: 25,
