@@ -7,9 +7,9 @@ import '../constants/constants.dart';
 import '../constants/widgets.dart';
 
 class BestPlayersCard extends StatelessWidget {
-  final String points;
-  final String name;
-  final String image;
+  final String? points;
+  final String? name;
+  final String? image;
   final int index;
   final bool referalPage;
   BestPlayersCard({super.key, required this.name, required this.image, required this.index, required this.points, required this.referalPage});
@@ -52,7 +52,7 @@ class BestPlayersCard extends StatelessWidget {
                       height: 70,
                       child: CachedNetworkImage(
                         fadeInCurve: Curves.ease,
-                        imageUrl: image,
+                        imageUrl: image!,
                         imageBuilder: (context, imageProvider) => Container(
                           width: size.width,
                           decoration: BoxDecoration(
@@ -96,7 +96,7 @@ class BestPlayersCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        points.substring(0, 5),
+                        points!.substring(0, 5),
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -114,7 +114,7 @@ class BestPlayersCard extends StatelessWidget {
                     ],
                   )
                 : Text(
-                    points.substring(0, 5),
+                    points!.substring(0, 5),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                     textAlign: TextAlign.end,

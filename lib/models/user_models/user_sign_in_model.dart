@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:game_app/models/user_models/referal_model.dart';
 import 'package:game_app/views/constants/index.dart';
 import 'package:game_app/controllers/settings_controller.dart';
 import 'package:http/http.dart' as http;
@@ -157,29 +158,32 @@ class GetMeModel {
   final int? user;
   final bool? verified;
   final bool? vip;
-  GetMeModel({
-    this.id,
-    this.pubgType,
-    this.vip,
-    this.bgImage,
-    this.location,
-    this.user,
-    this.verified,
-    this.forSale,
-    this.bio,
-    this.createdDate,
-    this.email,
-    this.firstName,
-    this.image,
-    this.lastName,
-    this.nickname,
-    this.phone,
-    this.points,
-    this.pointsFromTurnir,
-    this.price,
-    this.pubgId,
-    this.updatedDate,
-  });
+  final String? ref_code;
+  final String? used_ref_code;
+  GetMeModel(
+      {this.id,
+      this.pubgType,
+      this.vip,
+      this.bgImage,
+      this.location,
+      this.user,
+      this.verified,
+      this.forSale,
+      this.bio,
+      this.createdDate,
+      this.email,
+      this.firstName,
+      this.image,
+      this.lastName,
+      this.nickname,
+      this.phone,
+      this.points,
+      this.pointsFromTurnir,
+      this.price,
+      this.pubgId,
+      this.updatedDate,
+      this.ref_code,
+      this.used_ref_code});
 
   factory GetMeModel.fromJson(Map<dynamic, dynamic> json) {
     return GetMeModel(
@@ -200,6 +204,8 @@ class GetMeModel {
       nickname: json['pubg_username'] ?? 'null',
       phone: json['phone'] ?? 'null',
       points: json['points'] ?? 'null',
+      used_ref_code: json['used_ref_code'] ?? '',
+      ref_code: json['ref_code'] ?? '',
       pointsFromTurnir: json['points_from_turnir'] ?? 'null',
       price: json['price'] ?? 'null',
       pubgId: json['pubg_id'] ?? 'null',
@@ -207,8 +213,35 @@ class GetMeModel {
     );
   }
 
+  // Map<String, dynamic> toJson() => {
+  //       'id': id,
+  //       'pubgType': pubgType,
+  //       'lastName': lastName,
+  //       'verified': verified,
+  //       'forSale': forSale,
+  //       'bgImage': bgImage,
+  //       'bio': bio,
+  //       'createdDate': createdDate,
+  //       'email': email,
+  //       'vip': vip,
+  //       'user': user,
+  //       'location': location,
+  //       'firstName': firstName,
+  //       'image': image,
+  //       'nickname': nickname,
+  //       'phone': phone,
+  //       'points': points,
+  //       'used_ref_code': used_ref_code,
+  //       'ref_code': ref_code,
+  //       'pointsFromTurnir': pointsFromTurnir,
+  //       'price': price,
+  //       'pubgId': pubgId,
+  //       'updatedDate': updatedDate,
+  //     };
+
   Future<GetMeModel> getMe() async {
     final token = await Auth().getToken();
+    print(token.toString());
     final response = await http.get(
       Uri.parse(
         '$serverURL/api/accounts/get-my-account/',
@@ -224,6 +257,29 @@ class GetMeModel {
       return GetMeModel.fromJson(responseJson);
     } else {
       return GetMeModel();
+    }
+  }
+
+  Future<List<ReferalModel>> getReferal() async {
+    try {
+      final token = await Auth().getToken();
+
+      final response = await http.get(
+        Uri.parse(
+          '$serverURL/api/accounts/referal/',
+        ),
+        headers: <String, String>{
+          HttpHeaders.authorizationHeader: 'Bearer $token',
+        },
+      );
+      var dioResponse = json.decode(response.body);
+
+      List<dynamic> decoded = dioResponse;
+      var clients = decoded.map<ReferalModel>((e) => ReferalModel.fromJson(e)).toList();
+
+      return clients;
+    } catch (e) {
+      throw e;
     }
   }
 

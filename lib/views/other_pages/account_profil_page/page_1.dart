@@ -102,13 +102,13 @@ class _TabbarPage1State extends State<TabbarPage1> {
           ),
         ),
         // infoPartText('accountDetaile7', widget.model.user!.firsName ?? '', false),
-        infoPartText('accountDetaile9', widget.model.title ?? '', false),
+        infoPartText('accountDetaile9', widget.model.phone ?? '', false),
         Padding(
           padding: const EdgeInsets.only(left: 25, right: 25),
           child: AgreeButton(
             name: 'popUP1',
             onTap: () async {
-              await launch('tel://${widget.model.title}');
+              await launch('tel://${widget.model.phone}');
             },
           ),
         ),

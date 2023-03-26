@@ -5,9 +5,9 @@ import '../constants/constants.dart';
 import '../constants/widgets.dart';
 
 class OtherUserProductProfil extends StatelessWidget {
-  final String points;
-  final String name;
-  final String image;
+  final String? points;
+  final String? name;
+  final String? image;
   final int index;
   OtherUserProductProfil({
     super.key,
@@ -22,7 +22,7 @@ class OtherUserProductProfil extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text(name),
+        title: Text(name!),
       ),
       body: name != null
           ? Padding(
@@ -46,7 +46,7 @@ class OtherUserProductProfil extends StatelessWidget {
                                 height: 100,
                                 child: CachedNetworkImage(
                                   fadeInCurve: Curves.ease,
-                                  imageUrl: image,
+                                  imageUrl: image!,
                                   imageBuilder: (context, imageProvider) => Container(
                                     width: size.width,
                                     decoration: BoxDecoration(
@@ -100,7 +100,7 @@ class OtherUserProductProfil extends StatelessWidget {
                               style: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold, fontSize: 20),
                             ),
                             Text(
-                              points.substring(0, 5),
+                              points!.substring(0, 5),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               textAlign: TextAlign.end,

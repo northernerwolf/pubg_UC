@@ -14,28 +14,14 @@ class GetPostsAccountModel {
   final String? price;
   final String? title;
   final String? desc;
-
+  final String? phone;
   final String? image;
   final String? bgImage;
   final String? createdAt;
   final bool? vip;
   final PostByIdModel? user;
   final List<GetAccountVideos>? videos;
-  GetPostsAccountModel({
-    this.id,
-    this.bgImage,
-    this.pubgUserName,
-    this.pubgID,
-    this.image,
-    this.createdAt,
-    this.price,
-    this.desc,
-    this.pubgType,
-    this.title,
-    this.vip,
-    this.user,
-    this.videos,
-  });
+  GetPostsAccountModel({this.id, this.bgImage, this.pubgUserName, this.pubgID, this.image, this.createdAt, this.price, this.desc, this.pubgType, this.title, this.vip, this.user, this.videos, this.phone});
 
   factory GetPostsAccountModel.fromJson(Map<dynamic, dynamic> json) {
     return GetPostsAccountModel(
@@ -45,6 +31,7 @@ class GetPostsAccountModel {
       pubgID: json['pubg_id'] ?? 1,
       image: json['image'] ?? '',
       createdAt: json['created_at'] ?? '',
+      phone: json['phone'] ?? '',
       price: json['price'] ?? '0.0',
       desc: json['description'] ?? '0.0',
       pubgType: json['pubg_type'] ?? '0.0',

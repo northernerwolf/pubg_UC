@@ -1,9 +1,14 @@
 import 'package:game_app/views/constants/index.dart';
+import 'package:game_app/views/user_profil/pages/referal_list.dart';
 
-import '../../cards/best_players_card.dart';
+import '../../../models/user_models/referal_model.dart';
+import '../auth/repository_referal.dart';
 
 class ReferalPage extends StatelessWidget {
-  const ReferalPage({super.key});
+  ReferalRespositori getData = ReferalRespositori();
+  final String? referalcode;
+  final String? used_refcode;
+  ReferalPage({required this.referalcode, required this.used_refcode, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +48,13 @@ class ReferalPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 10, top: 8),
             child: Row(
               children: [
-                const Text(
-                  'JKHB186GKIFP158',
+                Text(
+                  referalcode!,
                   style: TextStyle(fontFamily: josefinSansBold, fontSize: 24),
                 ),
                 IconButton(
                   onPressed: () {
-                    Clipboard.setData(const ClipboardData(text: 'JKHB186GKIFP158')).then((value) {
+                    Clipboard.setData(ClipboardData(text: referalcode!)).then((value) {
                       showSnackBar('copySucces', 'copySuccesSubtitle', Colors.green);
                     });
                   },
@@ -72,43 +77,52 @@ class ReferalPage extends StatelessWidget {
               style: TextStyle(color: Colors.grey, fontSize: size.width >= 800 ? 30 : 22, fontFamily: josefinSansSemiBold),
             ),
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 0,
-              itemBuilder: (BuildContext context, int index) {
-                return BestPlayersCard(
-                  index: index,
-                  name: 'Pubg ady',
-                  points: '0.2',
-                  referalPage: true,
-                  image: '',
+          FutureBuilder<List<ReferalModel>>(
+              future: getData.getDryPortsModel(),
+              builder: (BuildContext context, AsyncSnapshot<List<ReferalModel>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: spinKit());
+                } else if (snapshot.hasError) {
+                  return errorData(onTap: () {});
+                } else if (snapshot.data == null) {
+                  return emptyData();
+                }
+
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ReferalUserCard(
+                        index: index,
+                        getMeModel: snapshot.data![index],
+                      );
+                    },
+                  ),
                 );
-              },
-            ),
-          ),
-          dividder(),
-          Container(
-            color: kPrimaryColorBlack,
-            padding: const EdgeInsets.only(bottom: 15, left: 12, right: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    'referalKodEarnedMoney'.tr,
-                    style: const TextStyle(color: Colors.white, fontFamily: josefinSansBold, fontSize: 24),
-                  ),
-                ),
-                const Expanded(
-                  child: Text(
-                    '0 TMT',
-                    textAlign: TextAlign.end,
-                    style: TextStyle(color: kPrimaryColor, fontFamily: josefinSansBold, fontSize: 24),
-                  ),
-                ),
-              ],
-            ),
-          )
+              }),
+          // dividder(),
+          // Container(
+          //   color: kPrimaryColorBlack,
+          //   padding: const EdgeInsets.only(bottom: 15, left: 12, right: 12),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Expanded(
+          //         child: Text(
+          //           'referalKodEarnedMoney'.tr,
+          //           style: const TextStyle(color: Colors.white, fontFamily: josefinSansBold, fontSize: 24),
+          //         ),
+          //       ),
+          //       const Expanded(
+          //         child: Text(
+          //           '0 TMT',
+          //           textAlign: TextAlign.end,
+          //           style: TextStyle(color: kPrimaryColor, fontFamily: josefinSansBold, fontSize: 24),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );

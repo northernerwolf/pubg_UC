@@ -63,7 +63,7 @@ class HomePageCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              model.title!,
+              model.phone!,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(

@@ -101,7 +101,7 @@ class _UserProfilState extends State<UserProfil> {
                 ProfilButton(
                   name: 'referalKod',
                   onTap: () {
-                    settingsController.loginUser.value ? Get.to(() => const ReferalPage()) : showSnackBar('loginError', 'loginError1', Colors.red);
+                    settingsController.loginUser.value ? Get.to(() => ReferalPage(referalcode: snapshot.data!.ref_code, used_refcode: snapshot.data!.used_ref_code)) : showSnackBar('loginError', 'loginError1', Colors.red);
                   },
                   icon: IconlyLight.ticketStar,
                 ),
