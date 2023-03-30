@@ -3,9 +3,10 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:game_app/controllers/wallet_controller.dart';
 import 'package:game_app/views/buttons/add_cart_button.dart';
+import '../../connection_check.dart';
 import '../constants/index.dart';
 
-class OrderCard extends StatelessWidget {
+class OrderCard extends StatefulWidget {
   final int id;
   final int count;
   final String title;
@@ -21,6 +22,11 @@ class OrderCard extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<OrderCard> createState() => _OrderCardState();
+}
+
+class _OrderCardState extends State<OrderCard> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 15, left: 15, right: 15),
@@ -35,7 +41,7 @@ class OrderCard extends StatelessWidget {
               borderRadius: borderRadius15,
               child: CachedNetworkImage(
                 fadeInCurve: Curves.ease,
-                imageUrl: image,
+                imageUrl: widget.image,
                 imageBuilder: (context, imageProvider) => Container(
                   width: Get.size.width,
                   decoration: BoxDecoration(
@@ -64,7 +70,7 @@ class OrderCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          title,
+                          widget.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold, fontSize: 17),
@@ -72,11 +78,12 @@ class OrderCard extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.find<WalletController>().removeCart(id);
-                          final double b = double.parse(price);
-                          Get.find<WalletController>().finalPRice.value -= b * count;
+                          Get.find<WalletController>().removeCart(widget.id);
+                          // final double b = double.parse(price);
+                          // Get.find<WalletController>().finalPRice.value -= b * count;
+                          Get.find<WalletController>().finalPRice.value = 0;
                           if (Get.find<WalletController>().finalPRice.value == 0) {
-                            Get.back();
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConnectionCheck()));
                           }
                         },
                         child: const Padding(
@@ -94,11 +101,11 @@ class OrderCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 6),
                     child: Text(
-                      '$price TMT',
+                      '${widget.price} TMT',
                       style: const TextStyle(color: kPrimaryColor, fontFamily: josefinSansBold, fontSize: 18),
                     ),
                   ),
-                  AddCartButton(productProfil: true, id: id, price: price, title: title, image: image)
+                  AddCartButton(productProfil: true, id: widget.id, price: widget.price, title: widget.title, image: widget.image)
                 ],
               ),
             ),

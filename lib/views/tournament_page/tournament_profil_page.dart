@@ -17,12 +17,14 @@ class TournamentProfilPage extends StatefulWidget {
   final int tournamentId;
   final bool finised;
   final int tournamentType;
+  final TournamentModel winners;
   const TournamentProfilPage({
     required this.tag,
     required this.image,
     required this.tournamentId,
     required this.finised,
     required this.tournamentType,
+    required this.winners,
     Key? key,
   }) : super(key: key);
 

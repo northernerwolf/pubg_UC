@@ -34,7 +34,9 @@ class _AddCartButtonState extends State<AddCartButton> {
   @override
   void initState() {
     super.initState();
-    checkInCart();
+    setState(() {
+      checkInCart();
+    });
   }
 
   dynamic checkInCart() {
@@ -42,7 +44,6 @@ class _AddCartButtonState extends State<AddCartButton> {
       if (element['id'] == widget.id) {
         number = element['count'];
         value = true;
-        setState(() {});
       }
     }
   }
@@ -120,12 +121,13 @@ class _AddCartButtonState extends State<AddCartButton> {
             : ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColorBlack, padding: EdgeInsets.symmetric(vertical: widget.productProfil ? 14 : 0, horizontal: value ? 15 : 0), elevation: 0, shape: RoundedRectangleBorder(borderRadius: widget.productProfil ? borderRadius20 : borderRadius15)),
                 onPressed: () {
-                  if (value == false) {
-                    walletController.addCart(id: widget.id, image: widget.image, price: widget.price, title: widget.title);
+                  setState(() {
+                    if (value == false) {
+                      walletController.addCart(id: widget.id, image: widget.image, price: widget.price, title: widget.title);
 
-                    value = !value;
-                  }
-                  setState(() {});
+                      value = !value;
+                    }
+                  });
                 },
                 child: value
                     ? numPart()

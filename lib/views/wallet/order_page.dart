@@ -58,10 +58,17 @@ class _OrderPageState extends State<OrderPage> {
                 style: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold, fontSize: 18),
               ),
               Obx(() {
+                if (walletController.finalPRice > 0) {
+                  return Text(
+                    '${walletController.finalPRice} TMT',
+                    style: const TextStyle(color: kPrimaryColor, fontFamily: josefinSansBold, fontSize: 20),
+                  );
+                }
                 return Text(
-                  '${walletController.finalPRice} TMT',
+                  '0 TMT',
                   style: const TextStyle(color: kPrimaryColor, fontFamily: josefinSansBold, fontSize: 20),
                 );
+                ;
               }),
             ],
           ),
@@ -70,7 +77,7 @@ class _OrderPageState extends State<OrderPage> {
               name: 'agree',
               onTap: () async {
                 final token = await Auth().getToken();
-                if (token != null) {
+                if (token != null && walletController.finalPRice > 0) {
                   Get.find<SettingsController>().agreeButton.value = !Get.find<SettingsController>().agreeButton.value;
                   final List list = [];
                   for (var element in walletController.cartList) {

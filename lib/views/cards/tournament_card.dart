@@ -24,13 +24,7 @@ class TournamentCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.to(
-          () => TournamentProfilPage(
-            tag: '$serverURL${tournamentModel.image}',
-            finised: finised,
-            tournamentType: tournamentType,
-            image: '$serverURL${tournamentModel.image}',
-            tournamentId: tournamentModel.id!,
-          ),
+          () => TournamentProfilPage(tag: '$serverURL${tournamentModel.image}', finised: finised, tournamentType: tournamentType, image: '$serverURL${tournamentModel.image}', tournamentId: tournamentModel.id!, winners: tournamentModel),
         );
       },
       child: Container(

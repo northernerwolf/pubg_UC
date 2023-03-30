@@ -77,7 +77,8 @@ class _TabPage3State extends State<TabPage3> {
                             ? 4
                             : 0),
           );
-        } else {
+        }
+        if (widget.model.winners!.length != 0) {
           return Container(
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -93,6 +94,7 @@ class _TabPage3State extends State<TabPage3> {
                             : 0),
           );
         }
+        return null;
 
         // if (model.type == "solo") {
         //   return tab3PageTypeSolo(
