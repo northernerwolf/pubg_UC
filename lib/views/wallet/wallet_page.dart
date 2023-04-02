@@ -193,11 +193,13 @@ class _WalletPageState extends State<WalletPage> {
                   if (token != null) {
                     if (validator.currentState!.validate()) {
                       double value = 0.0;
+                      double counts = 0.0;
                       for (var element in walletController.cartList) {
                         value += double.parse(element['price']) * element['count'];
+                        counts += element['count'];
                       }
                       walletController.finalPRice.value = value;
-                      Get.back();
+                      walletController.finalCount.value = counts;
                       await Get.to(
                         () => OrderPage(
                           pubgID: pubgUserIDController.text,

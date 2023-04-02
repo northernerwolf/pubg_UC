@@ -26,6 +26,16 @@ class OrderCard extends StatefulWidget {
 }
 
 class _OrderCardState extends State<OrderCard> {
+  final WalletController walletController = Get.put(WalletController());
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      widget.count;
+    });
+    walletController.getUserMoney();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -78,13 +88,19 @@ class _OrderCardState extends State<OrderCard> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.find<WalletController>().removeCart(widget.id);
-                          // final double b = double.parse(price);
-                          // Get.find<WalletController>().finalPRice.value -= b * count;
-                          Get.find<WalletController>().finalPRice.value = 0;
-                          if (Get.find<WalletController>().finalPRice.value == 0) {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConnectionCheck()));
-                          }
+                          setState(() {
+                            Get.find<WalletController>().removeCart(widget.id);
+
+                            final double b = double.parse(widget.price);
+                            final double a = Get.find<WalletController>().finalCount.value;
+                            Get.find<WalletController>().finalPRice.value -= b * a;
+                            print(Get.find<WalletController>().finalPRice.value);
+
+                            // Get.find<WalletController>().finalPRice.value = 0;
+                            if (Get.find<WalletController>().finalPRice.value == 0) {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ConnectionCheck()));
+                            }
+                          });
                         },
                         child: const Padding(
                           padding: EdgeInsets.only(

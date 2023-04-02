@@ -9,6 +9,7 @@ class WalletController extends GetxController {
   final storage = GetStorage();
 
   RxDouble finalPRice = 0.0.obs;
+  RxDouble finalCount = 0.0.obs;
   RxList cartList = [].obs;
   RxString userMoney = '0.0'.obs;
 

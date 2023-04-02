@@ -17,7 +17,9 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
+  @override
   final WalletController walletController = Get.put(WalletController());
+
   @override
   void initState() {
     super.initState();
@@ -43,9 +45,9 @@ class _OrderPageState extends State<OrderPage> {
               style: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold, fontSize: 22),
             ),
           ),
-          Obx(() {
-            return text('orderPage1', walletController.cartList.length.toString());
-          }),
+          // Obx(() {
+          //   return text('orderPage1', walletController.cartList.length.toString());
+          // }),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: text('accountDetaile2', widget.pubgID),

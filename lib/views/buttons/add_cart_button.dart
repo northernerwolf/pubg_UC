@@ -28,6 +28,7 @@ class AddCartButton extends StatefulWidget {
 
 class _AddCartButtonState extends State<AddCartButton> {
   int number = 1;
+  int price = 0;
   bool value = false;
   final WalletController walletController = Get.put(WalletController());
 
@@ -62,7 +63,18 @@ class _AddCartButtonState extends State<AddCartButton> {
               number--;
               walletController.minusCart(widget.id);
             }
-            setState(() {});
+            setState(() {
+              // Get.find<WalletController>().removeCart(widget.id);
+              final double b = double.parse(widget.price);
+              Get.find<WalletController>().finalCount.value = number.toDouble();
+              Get.find<WalletController>().finalPRice.value -= b;
+              for (var element in walletController.cartList) {
+                if (element['id'] == widget.id) {
+                  number = element['count'];
+                  value = true;
+                }
+              }
+            });
           },
           child: const Icon(
             CupertinoIcons.minus_circle,
@@ -81,7 +93,18 @@ class _AddCartButtonState extends State<AddCartButton> {
           onTap: () {
             number++;
             walletController.addCart(id: widget.id, image: widget.image, price: widget.price, title: widget.title);
-            setState(() {});
+            setState(() {
+              final double b = double.parse(widget.price);
+              Get.find<WalletController>().finalCount.value = number.toDouble();
+              Get.find<WalletController>().finalPRice.value += b;
+              print(number);
+              for (var element in walletController.cartList) {
+                if (element['id'] == widget.id) {
+                  number = element['count'];
+                  value = true;
+                }
+              }
+            });
           },
           child: const Icon(
             CupertinoIcons.add_circled,
