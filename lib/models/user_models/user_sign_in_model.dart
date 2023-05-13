@@ -158,12 +158,14 @@ class GetMeModel {
   final int? user;
   final bool? verified;
   final bool? vip;
+  final bool? blocked;
   final String? ref_code;
   final String? used_ref_code;
   GetMeModel(
       {this.id,
       this.pubgType,
       this.vip,
+      this.blocked,
       this.bgImage,
       this.location,
       this.user,
@@ -192,6 +194,7 @@ class GetMeModel {
       lastName: json['last_name'] ?? 'null',
       verified: json['verified'] ?? false,
       forSale: json['for_sale'] ?? false,
+      blocked: json['blocked'] ?? false,
       bgImage: json['bg_image'] ?? 'null',
       bio: json['bio'] ?? 'null',
       createdDate: json['created_date'] ?? 'null',
