@@ -43,7 +43,7 @@ class MyTranslations extends Translations {
           'bestPlayers2': 'Iň gowy Oýunçylar',
           'bestPlayers': 'Oýunçylar',
           'bottomNavBar1': 'Baş sahypa',
-          'bottomNavBar2': 'Turnir',
+          'bottomNavBar2': 'Lobby',
           'buyEpin': 'Epin Bilen\n Satyn almak',
           'buyID': 'ID Bilen\n Satyn almak',
           'cannot_find_data_tournament': 'Şu wagtlykça turnir ýok',
@@ -241,6 +241,7 @@ class MyTranslations extends Translations {
           'posints': 'Baly',
           'pointsFromTurnir': 'Turnir bal :',
           'referalKod': 'Referal Kody : ',
+          'work_time': 'Irden sagat 08:00 - 22:00 habarlaşyp bilersiňiz!',
         },
         'ru': {
           'errorLoadEmptyData': 'Данные недоступны',
@@ -310,7 +311,7 @@ class MyTranslations extends Translations {
           'bestPlayers': 'Лучшие игроки',
           'bestPlayers2': 'Лучшие игроки',
           'bottomNavBar1': 'Главная',
-          'bottomNavBar2': 'Турнир',
+          'bottomNavBar2': 'Лоббы',
           'buyEpin': 'Купить с Pubg Эпин',
           'buyID': 'Купить с ид Pubg',
           'call': 'Позвонить',
@@ -481,6 +482,7 @@ class MyTranslations extends Translations {
           'videoUploading1': 'Пожалуйста, подождите пока видео загружается',
           'waitSubtitle': 'Пожалуйста, подождите, пока ваши данные загружаются!',
           'welcome': 'Добро пожаловать. Пожалуйста, войдите в приложение, чтобы использовать все функции',
+          'work_time': 'Вы можете связаться с нами с 08:00 до 22:00!',
         },
       };
 }

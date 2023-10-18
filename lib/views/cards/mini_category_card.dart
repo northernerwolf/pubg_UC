@@ -40,7 +40,10 @@ class MiniCategoryCard extends StatelessWidget {
           }
         } else if (index == 2) {
           await Get.to(
-            () => AddCash(),
+            () => AskMoneyPage(
+              text: 'message',
+              textSend: 'requestCash'.tr,
+            ),
           );
         } else if (index == 3) {
           await Get.to(() => NotificationPage());

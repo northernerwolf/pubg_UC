@@ -188,6 +188,13 @@ class _AskMoneyPageState extends State<AskMoneyPage> {
                     style: const TextStyle(color: Colors.white, fontFamily: josefinSansMedium, height: 1.3, fontSize: 18),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                  child: Text(
+                    'work_time'.tr,
+                    style: const TextStyle(color: Colors.white, fontFamily: josefinSansMedium, height: 1.3, fontSize: 18),
+                  ),
+                ),
                 widget.text != 'message'
                     ? CustomTextField(
                         labelName: 'fullName',

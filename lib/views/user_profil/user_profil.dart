@@ -9,7 +9,6 @@ import 'package:game_app/views/user_profil/pages/add_cash.dart';
 import 'package:game_app/views/user_profil/pages/edit_work_profil.dart';
 import 'package:game_app/views/user_profil/pages/history_orders_page.dart';
 import 'package:game_app/views/user_profil/pages/profile_settings.dart';
-import 'package:game_app/views/user_profil/pages/referal_page.dart';
 import 'package:game_app/views/user_profil/pages/settings.dart';
 
 import '../../controllers/wallet_controller.dart';
@@ -98,13 +97,13 @@ class _UserProfilState extends State<UserProfil> {
                   },
                   icon: IconlyLight.user3,
                 ),
-                ProfilButton(
-                  name: 'referalKod',
-                  onTap: () {
-                    settingsController.loginUser.value ? Get.to(() => ReferalPage(referalcode: snapshot.data!.ref_code, used_refcode: snapshot.data!.used_ref_code)) : showSnackBar('loginError', 'loginError1', Colors.red);
-                  },
-                  icon: IconlyLight.ticketStar,
-                ),
+                // ProfilButton(
+                //   name: 'referalKod',
+                //   onTap: () {
+                //     settingsController.loginUser.value ? Get.to(() => ReferalPage(referalcode: snapshot.data!.ref_code, used_refcode: snapshot.data!.used_ref_code)) : showSnackBar('loginError', 'loginError1', Colors.red);
+                //   },
+                //   icon: IconlyLight.ticketStar,
+                // ),
                 loginLogout(),
               ],
             );
@@ -164,7 +163,10 @@ class _UserProfilState extends State<UserProfil> {
           name: 'cashHistory',
           onTap: () {
             Get.to(
-              () => AddCash(),
+              () => AskMoneyPage(
+                text: 'message',
+                textSend: 'requestCash'.tr,
+              ),
             );
           },
           icon: IconlyLight.wallet,

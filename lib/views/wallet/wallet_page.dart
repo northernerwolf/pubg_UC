@@ -82,39 +82,39 @@ class _WalletPageState extends State<WalletPage> {
       elevation: 1,
       centerTitle: true,
       leadingWidth: 80,
-      leading: GestureDetector(
-        onTap: () {
-          selectCurrency();
-        },
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8),
-              child: ClipOval(
-                child: Image.asset(
-                  selectedIndex == 1
-                      ? ruIcon
-                      : selectedIndex == 2
-                          ? tmIcon
-                          : trIcon,
-                  width: 30,
-                  height: 30,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Text(
-              selectedIndex == 1
-                  ? 'Rub'
-                  : selectedIndex == 2
-                      ? 'TMT'
-                      : 'TL',
-              style: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold),
-            )
-          ],
-        ),
-      ),
+      // leading: GestureDetector(
+      //   onTap: () {
+      //     selectCurrency();
+      //   },
+      //   child: Row(
+      //     mainAxisSize: MainAxisSize.min,
+      //     children: [
+      //       Padding(
+      //         padding: const EdgeInsets.only(left: 8, right: 8),
+      //         child: ClipOval(
+      //           child: Image.asset(
+      //             selectedIndex == 1
+      //                 ? ruIcon
+      //                 : selectedIndex == 2
+      //                     ? tmIcon
+      //                     : trIcon,
+      //             width: 30,
+      //             height: 30,
+      //             fit: BoxFit.cover,
+      //           ),
+      //         ),
+      //       ),
+      //       Text(
+      //         selectedIndex == 1
+      //             ? 'Rub'
+      //             : selectedIndex == 2
+      //                 ? 'TMT'
+      //                 : 'TL',
+      //         style: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold),
+      //       )
+      //     ],
+      //   ),
+      // ),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 5),
