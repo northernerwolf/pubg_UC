@@ -57,7 +57,8 @@ class BestPlayers extends StatelessWidget {
                   );
                 }
                 return ListView.builder(
-                  itemCount: snapshot.data!.length,
+                  shrinkWrap: true,
+                  itemCount: snapshot.data!.length - 1,
                   physics: const BouncingScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
                     return BestPlayersCard(

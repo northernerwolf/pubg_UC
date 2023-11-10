@@ -181,13 +181,13 @@ class _AskMoneyPageState extends State<AskMoneyPage> {
             child: ListView(
               padding: const EdgeInsets.all(15),
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
-                  child: Text(
-                    widget.text == 'message' ? widget.text.tr : 'addCash'.tr,
-                    style: const TextStyle(color: Colors.white, fontFamily: josefinSansMedium, height: 1.3, fontSize: 18),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                //   child: Text(
+                //     widget.text == 'message' ? widget.text.tr : 'addCash'.tr,
+                //     style: const TextStyle(color: Colors.white, fontFamily: josefinSansMedium, height: 1.3, fontSize: 18),
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
                   child: Text(

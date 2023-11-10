@@ -48,6 +48,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   await Firebase.initializeApp();
+  final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
+  String? token = await firebaseMessaging.getToken();
+  print('fffffffcccmm');
+  print(token);
   HttpOverrides.global = MyHttpOverrides();
   await FirebaseMessaging.instance.requestPermission();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -96,6 +100,7 @@ class _MyAppRunState extends State<MyAppRun> {
 
   dynamic firebaseMessagingPart() {
     FirebaseMessaging.instance.subscribeToTopic('EVENT');
+
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       flutterLocalNotificationsPlugin.show(
         message.data.hashCode,

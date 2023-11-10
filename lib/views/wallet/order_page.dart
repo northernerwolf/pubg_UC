@@ -87,6 +87,7 @@ class _OrderPageState extends State<OrderPage> {
                       'uc': element['id'],
                       'count': element['count'],
                     });
+                    print(list);
                   }
                   await UcModel().addCart(list, false, widget.pubgID).then((value) {
                     if (value == 200 || value == 500) {

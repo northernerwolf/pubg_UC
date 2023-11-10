@@ -35,7 +35,6 @@ class _TabPage3State extends State<TabPage3> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     for (var e in widget.model.teams!) {
       if (e.teamUsers!.length > 0) team_users.add(e);
