@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "453316790969",
-    "project_id": "pubg-721a9",
-    "storage_bucket": "pubg-721a9.appspot.com"
+    "project_number": "35945321409",
+    "project_id": "uc-dayy-45236",
+    "storage_bucket": "uc-dayy-45236.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:453316790969:android:e76dc44541c2193798e968",
+        "mobilesdk_app_id": "1:35945321409:android:b85a6d607a2213d91a5540",
         "android_client_info": {
-          "package_name": "com.bilermennesil.gameApp"
+          "package_name": "com.northernerwolf.gameApp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "453316790969-4q2d9p5esp8dbb7gb99m278gi0bmfojq.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.bilermennesil.gameApp",
-            "certificate_hash": "bdc54734cb2d09e3faf4c8a7cf4ff56deefcb3ab"
-          }
-        },
-        {
-          "client_id": "453316790969-p6sjage4dt4aar321fk7n57r1s0p90ta.apps.googleusercontent.com",
+          "client_id": "35945321409-28jmf9sp7kvpc5urqdh7ecu7u8bjn2dl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB55N23IrNqSRQdtEt7JptuoQI1k0bNNpc"
+          "current_key": "AIzaSyC00fgrPbGm54V4XLofYt9XLhWFKbiqkLw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "453316790969-p6sjage4dt4aar321fk7n57r1s0p90ta.apps.googleusercontent.com",
+              "client_id": "35945321409-28jmf9sp7kvpc5urqdh7ecu7u8bjn2dl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
