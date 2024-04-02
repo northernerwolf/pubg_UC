@@ -4,6 +4,7 @@ import 'package:game_app/views/constants/index.dart';
 
 import '../../models/tournament_model.dart';
 
+// ignore: must_be_immutable
 class CardTeansAll extends StatefulWidget {
   late Teams teams;
   late int selectedTeam;
@@ -18,7 +19,6 @@ class CardTeansAll extends StatefulWidget {
 
 class _CardTeansAllState extends State<CardTeansAll> {
   late int index = 0;
-  int _selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {

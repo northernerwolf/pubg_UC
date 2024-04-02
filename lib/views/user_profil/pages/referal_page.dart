@@ -4,6 +4,7 @@ import 'package:game_app/views/user_profil/pages/referal_list.dart';
 import '../../../models/user_models/referal_model.dart';
 import '../auth/repository_referal.dart';
 
+// ignore: must_be_immutable
 class ReferalPage extends StatelessWidget {
   ReferalRespositori getData = ReferalRespositori();
   final String? referalcode;

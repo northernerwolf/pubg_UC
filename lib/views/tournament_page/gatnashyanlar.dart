@@ -3,6 +3,7 @@ import '../cards/empty_users_card.dart';
 import '../cards/gatnashyanlar_card.dart';
 import '../constants/index.dart';
 
+// ignore: must_be_immutable
 class Gatnashyanlatr extends StatefulWidget {
   late Teams teams;
   late Awards awards;

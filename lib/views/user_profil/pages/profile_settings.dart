@@ -32,7 +32,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   FocusNode pubgIDFocusNode = FocusNode();
 
   File? selectedImage;
-  File? _imgs;
 
   changeData(String name, String phone, String pubgID) {
     pubgNameController.text = name;

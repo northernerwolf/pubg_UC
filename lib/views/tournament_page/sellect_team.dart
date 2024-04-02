@@ -6,6 +6,7 @@ import 'package:game_app/views/constants/index.dart';
 
 import 'new_tournamet_page.dart';
 
+// ignore: must_be_immutable
 class SellctTeam extends StatefulWidget {
   TournamentModel turnir;
   SellctTeam({super.key, required this.turnir});

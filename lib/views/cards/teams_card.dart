@@ -1,6 +1,7 @@
 import 'package:game_app/models/tournament_model.dart';
 import 'package:game_app/views/constants/index.dart';
 
+// ignore: must_be_immutable
 class TeamsCard extends StatefulWidget {
   late Teams team;
   late String turnirType;

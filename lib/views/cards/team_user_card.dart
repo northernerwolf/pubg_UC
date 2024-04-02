@@ -2,6 +2,7 @@ import 'package:game_app/views/constants/index.dart';
 
 import '../../models/tournament_model.dart';
 
+// ignore: must_be_immutable
 class TeamUserCard extends StatefulWidget {
   // late Teams team;
   late TeamUsers teamUsers;

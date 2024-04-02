@@ -17,7 +17,6 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> {
-  @override
   final WalletController walletController = Get.put(WalletController());
 
   @override
@@ -70,7 +69,6 @@ class _OrderPageState extends State<OrderPage> {
                   '0 TMT',
                   style: const TextStyle(color: kPrimaryColor, fontFamily: josefinSansBold, fontSize: 20),
                 );
-                ;
               }),
             ],
           ),

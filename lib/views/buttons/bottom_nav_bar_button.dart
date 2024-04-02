@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../constants/constants.dart';
 
+// ignore: must_be_immutable
 class BottomNavbarButton extends StatelessWidget {
   List names = [
     'bottomNavBar1',

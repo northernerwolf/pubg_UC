@@ -4,6 +4,7 @@ import '../../models/tournament_model.dart';
 import '../cards/empty_users_card.dart';
 import '../cards/gatnashyanlar_card.dart';
 
+// ignore: must_be_immutable
 class WinnersAll extends StatefulWidget {
   late Winners winners;
   late Awards awards;

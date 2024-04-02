@@ -5,6 +5,7 @@ import '../../../models/user_models/referal_model.dart';
 import '../../constants/constants.dart';
 import '../../constants/widgets.dart';
 
+// ignore: must_be_immutable
 class ReferalUserCard extends StatelessWidget {
   int index;
   final ReferalModel getMeModel;
