@@ -56,7 +56,7 @@ android {
         applicationId "com.northernerwolf.gameApp"
         minSdkVersion  21
         targetSdkVersion 34
-        versionCode 6
+        versionCode 7
         versionName flutterVersionName
         multiDexEnabled true
     }

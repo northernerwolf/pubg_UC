@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:game_app/views/concurs/get_concurs.dart';
 import 'package:game_app/views/concurs/get_gifts.dart';
 import 'package:game_app/views/constants/index.dart';
@@ -31,53 +32,58 @@ class _KonkursScreenState extends State<KonkursScreen> {
         fontSize: 0,
         backArrow: false,
         iconRemove: false,
-        name: 'Konkurs',
+        name: 'Gifts & Konkurs',
         elevationWhite: true,
       ),
       body: Consumer<ConCatigoryProvider>(builder: (_, concurs, __) {
-        return ListView.builder(
-            itemCount: concurs.conCatigory.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                  onTap: () {
-                    if (index == 0) {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => GetConcursScreen()));
-                    } else if (index == 1) {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => GetGiftsScreen()));
-                    }
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: kPrimaryColor,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                            height: 100,
-                            width: 100,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), topLeft: Radius.circular(15)),
-                              child: Image.network(
-                                "http://216.250.11.240" + concurs.conCatigory[index].image,
-                                fit: BoxFit.cover,
-                              ),
-                            )),
-                        Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Text(
-                            concurs.conCatigory[index].nameTm,
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-                          ),
-                        )
-                      ],
+        if (concurs.isLoading == true) {
+          return Center(child: spinKit());
+        } else {
+          return ListView.builder(
+              itemCount: concurs.conCatigory.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: () {
+                      if (index == 0) {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => GetConcursScreen()));
+                      } else if (index == 1) {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => GetGiftsScreen()));
+                      }
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: kPrimaryColor,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                              height: 100,
+                              width: 100,
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), topLeft: Radius.circular(15)),
+                                  child: CachedNetworkImage(
+                                    imageUrl: "http://216.250.11.240" + concurs.conCatigory[index].image,
+                                    fit: BoxFit.cover,
+                                    progressIndicatorBuilder: (context, url, downloadProgress) => Center(child: CircularProgressIndicator()),
+                                    errorWidget: (context, url, error) => Icon(Icons.error),
+                                  ))),
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              concurs.conCatigory[index].nameTm,
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            });
+                );
+              });
+        }
       }),
     );
   }

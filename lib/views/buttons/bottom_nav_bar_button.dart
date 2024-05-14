@@ -10,21 +10,21 @@ class BottomNavbarButton extends StatelessWidget {
   List names = [
     'bottomNavBar1',
     'bottomNavBar2',
-    'Concurs',
+    'Gifts',
     'UC',
     'profil',
   ];
   List iconsLight = [
     IconlyLight.home,
     IconlyLight.document,
-    CupertinoIcons.add_circled,
+    CupertinoIcons.gift,
     IconlyLight.wallet,
     IconlyLight.profile,
   ];
   List iconsBold = [
     IconlyBold.home,
     IconlyBold.document,
-    CupertinoIcons.add_circled,
+    CupertinoIcons.gift,
     IconlyBold.wallet,
     IconlyBold.profile,
   ];
@@ -71,30 +71,17 @@ class BottomNavbarButton extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                    child: index != selectedIndex
-                        ? icon
-                            ? Image.asset(
-                                'assets/icons/iconLight.png',
-                                color: Colors.white,
-                                width: 22,
-                              )
-                            : Icon(
-                                iconsLight[index],
-                                size: 24,
-                                color: Colors.white,
-                              )
-                        : icon
-                            ? Image.asset(
-                                'assets/icons/iconLight.png',
-                                color: Colors.white,
-                                width: 22,
-                              )
-                            : Icon(
-                                iconsBold[index],
-                                size: 24,
-                                color: Colors.white,
-                              ),
-                  ),
+                      child: index != selectedIndex
+                          ? Icon(
+                              iconsLight[index],
+                              size: 24,
+                              color: Colors.white,
+                            )
+                          : Icon(
+                              iconsBold[index],
+                              size: 24,
+                              color: Colors.white,
+                            )),
                   Text(
                     '${names[index]}'.tr,
                     overflow: TextOverflow.ellipsis,

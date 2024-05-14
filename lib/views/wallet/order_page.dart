@@ -72,41 +72,75 @@ class _OrderPageState extends State<OrderPage> {
               }),
             ],
           ),
-          Center(
-            child: AgreeButton(
-              name: 'agree',
-              onTap: () async {
-                final token = await Auth().getToken();
-                if (token != null && walletController.finalPRice > 0) {
-                  Get.find<SettingsController>().agreeButton.value = !Get.find<SettingsController>().agreeButton.value;
-                  final List list = [];
-                  for (var element in walletController.cartList) {
-                    list.add({
-                      'uc': element['id'],
-                      'count': element['count'],
-                    });
-                    print(list);
-                  }
-                  await UcModel().addCart(list, false, widget.pubgID).then((value) {
-                    if (value == 200 || value == 500) {
-                      walletController.cartList.clear();
-                      walletController.cartList.refresh();
-                      Get.back();
-                      Get.back();
-                      Get.find<WalletController>().getUserMoney();
-                      showSnackBar('copySucces', 'orderSubtitle', Colors.green);
-                    } else if (value == 404) {
-                      showSnackBar('money_error_title', 'money_error_subtitle', Colors.red);
-                    } else {
-                      showSnackBar('noConnection3', 'tournamentInfo14', Colors.red);
-                    }
-                  });
-                  Get.find<SettingsController>().agreeButton.value = !Get.find<SettingsController>().agreeButton.value;
-                } else {
-                  showSnackBar('loginError', 'loginError1', Colors.red);
-                }
-              },
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap: () {
+                  // Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartPayment()));
+                },
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width / 2.2,
+                  child: Center(
+                      child: Container(
+                    width: MediaQuery.of(context).size.width / 2.2,
+                    decoration: BoxDecoration(
+                      borderRadius: borderRadius20,
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Kartdan",
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(color: kPrimaryColor, fontFamily: josefinSansSemiBold, fontSize: 22),
+                      ),
+                    ),
+                  )),
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 2.2,
+                child: Center(
+                  child: AgreeButton(
+                    name: 'Nagt',
+                    onTap: () async {
+                      final token = await Auth().getToken();
+                      if (token != null && walletController.finalPRice > 0) {
+                        Get.find<SettingsController>().agreeButton.value = !Get.find<SettingsController>().agreeButton.value;
+                        final List list = [];
+                        for (var element in walletController.cartList) {
+                          list.add({
+                            'uc': element['id'],
+                            'count': element['count'],
+                          });
+                          print(list);
+                        }
+                        await UcModel().addCart(list, false, widget.pubgID).then((value) {
+                          if (value == 200 || value == 500) {
+                            walletController.cartList.clear();
+                            walletController.cartList.refresh();
+                            Get.back();
+                            Get.back();
+                            Get.find<WalletController>().getUserMoney();
+                            showSnackBar('copySucces', 'orderSubtitle', Colors.green);
+                          } else if (value == 404) {
+                            showSnackBar('money_error_title', 'money_error_subtitle', Colors.red);
+                          } else {
+                            showSnackBar('noConnection3', 'tournamentInfo14', Colors.red);
+                          }
+                        });
+                        Get.find<SettingsController>().agreeButton.value = !Get.find<SettingsController>().agreeButton.value;
+                      } else {
+                        showSnackBar('loginError', 'loginError1', Colors.red);
+                      }
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

@@ -94,6 +94,7 @@ Future<void> main() async {
         ChangeNotifierProvider(create: (_) => getGiftsProvider()),
         ChangeNotifierProvider(create: (_) => getConcursProvider()),
         ChangeNotifierProvider(create: (_) => getConcursByIDProvider()),
+        ChangeNotifierProvider(create: (_) => postPaymentProvider()),
       ],
       child: const MyAppRun(),
     ),

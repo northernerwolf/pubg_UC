@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:game_app/models/get_concurs_model.dart';
@@ -5,6 +7,7 @@ import 'package:game_app/models/get_gifts_model.dart';
 import 'package:game_app/models/user_models/auth_model.dart';
 
 import '../models/con_catigory.dart';
+import '../models/pay_model.dart';
 
 class ConCatigoryProvider with ChangeNotifier {
   bool isLoading = false;
@@ -152,6 +155,53 @@ class getConcursByIDProvider with ChangeNotifier {
         }
 
         return;
+      }
+      // ignore: deprecated_member_use
+    } on DioError {
+      isLoading = false;
+
+      notifyListeners();
+    }
+    return;
+  }
+}
+
+class postPaymentProvider with ChangeNotifier {
+  bool isLoading = false;
+  bool waiting = false;
+
+  PayModel? payModel;
+
+  static Dio dio = Dio();
+
+  Future postPayment(String amount) async {
+    isLoading = true;
+
+    final token = await Auth().getToken();
+
+    final headers = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
+
+    try {
+      var response = await dio.post(
+        "http://216.250.11.240/api/carts/pay/",
+        data: jsonEncode({
+          "amount": amount,
+        }),
+        options: Options(headers: headers),
+      );
+
+      if (response.statusCode == 200) {
+        if (response.data != null) {
+          payModel = PayModel.fromJson(response.data);
+          print(response.data);
+          isLoading = false;
+          notifyListeners();
+        }
+
+        return response.statusCode;
       }
       // ignore: deprecated_member_use
     } on DioError {
