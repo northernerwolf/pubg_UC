@@ -1,24 +1,25 @@
 name: game_app
-version: 1.0.0+2
+version: 1.0.2+6
 publish_to: none
 description: A new Flutter project.
-environment: 
-  sdk: '>=2.17.0 <3.0.0'
+environment:
+  sdk: ">=2.17.0 <3.0.0"
 
-dependencies: 
+dependencies:
   cached_network_image: any
   carousel_slider: ^4.0.0
   cupertino_icons: ^1.0.2
   dotted_border: ^2.0.0+1
   flutter_iconly: ^1.0.2
-  firebase_messaging: ^14.7.3
-  firebase_core: any
+  firebase_messaging: ^11.2.6
+  firebase_core: ^1.10.0
+  firebase_core_platform_interface: ^4.5.1
   flutter_local_notifications: any
-  # flutter_staggered_grid_view: ^0.4.0 
+  # flutter_staggered_grid_view: ^0.4.0
   get_storage: any
   http: any
   image_picker: ^0.8.4+4
-  lottie: ^1.2.1 
+  lottie: ^1.2.1
   permission_handler: ^8.3.0
   share: any
   url_launcher: ^6.1.5
@@ -29,37 +30,54 @@ dependencies:
   pull_to_refresh: ^2.0.0
   video_compress: ^3.1.1
   flick_video_player: any
-  get: 4.6.5
-  file: ^6.1.4 
+  get: ^4.6.5
+  file: ^6.1.4
   intl: ^0.18.0
   time_machine: ^0.9.17
-  flutter: 
+  provider: ^6.0.5
+  dio: ^5.3.0
+  flutter_launcher_icons: ^0.11.0
+
+  flutter:
     sdk: flutter
 
-dev_dependencies: 
-  flutter_test: 
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/image/logo.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "assets/image/logo.png" # only available for Android 8.0 devices and above
+  adaptive_icon_foreground: "assets/image/logo.png"
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/image/logo.png"
+  adaptive_icon_background: "assets/image/logo.png" # only available for Android 8.0 devices and above
+  adaptive_icon_foreground: "assets/image/logo.png"
+
+dev_dependencies:
+  flutter_test:
     sdk: flutter
 
-flutter: 
-  assets: 
+flutter:
+  assets:
     - assets/fonts/
     - assets/icons/
     - assets/lang/
     - assets/lottie/
     - assets/image/
-  fonts: 
+  fonts:
     - family: JosefinSansBold
-      fonts: 
+      fonts:
         - asset: assets/fonts/NormsProBold.otf
     - family: JosefinSansSemiBold
-      fonts: 
+      fonts:
         - asset: assets/fonts/NormsProMedium.otf
     - family: JosefinSansMedium
-      fonts: 
+      fonts:
         - asset: assets/fonts/NormsProRegular.otf
     - family: JosefinSansRegular
-      fonts: 
+      fonts:
         - asset: assets/fonts/NormsProLight.otf
   uses-material-design: true
   generate: true
-

@@ -10,8 +10,8 @@ class BottomNavbarButton extends StatelessWidget {
   List names = [
     'bottomNavBar1',
     'bottomNavBar2',
-    'bestPlayers',
-    'Pubg UC',
+    'Concurs',
+    'UC',
     'profil',
   ];
   List iconsLight = [

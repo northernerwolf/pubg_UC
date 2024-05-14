@@ -1,7 +1,7 @@
 // ignore_for_file: missing_return, file_names, must_be_immutable, require_trailing_commas
 
-import 'package:game_app/views/best_players/best_players.dart';
 import 'package:game_app/views/buttons/bottom_nav_bar_button.dart';
+import 'package:game_app/views/concurs/koncurs_screen.dart';
 import 'package:game_app/views/constants/index.dart';
 import 'package:game_app/controllers/wallet_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -24,7 +24,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List page = [
     const HomePage(),
     const NewTournamentPage(),
-    BestPlayers(),
+    KonkursScreen(),
+    // BestPlayers(),
     const WalletPage(),
     const UserProfil(),
   ];

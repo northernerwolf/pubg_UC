@@ -1,8 +1,8 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:game_app/provider/getkonkur.dart';
+import 'package:provider/provider.dart';
 import 'dart:io';
 import 'connection_check.dart';
 import 'controllers/all_controller_bindings.dart';
@@ -16,10 +16,10 @@ class MyHttpOverrides extends HttpOverrides {
   }
 }
 
-const AndroidNotificationChannel channel = AndroidNotificationChannel(
+AndroidNotificationChannel channel = AndroidNotificationChannel(
   'high_importance_channel', // id
   'High Importance Notifications', // title
-  description: 'This channel is used for important notifications.', // description
+  'This channel is used for important notifications.', // description
   importance: Importance.high,
 );
 
@@ -35,7 +35,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
       android: AndroidNotificationDetails(
         channel.id,
         channel.name,
-        channelDescription: channel.description,
+        channel.description,
         color: Colors.white,
         styleInformation: const BigTextStyleInformation(''),
         icon: '@mipmap/ic_launcher',
@@ -50,7 +50,7 @@ Future<void> main() async {
   await Firebase.initializeApp();
   final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
   String? token = await firebaseMessaging.getToken();
-  print('fffffffcccmm');
+
   print(token);
   HttpOverrides.global = MyHttpOverrides();
   await FirebaseMessaging.instance.requestPermission();
@@ -69,7 +69,9 @@ Future<void> main() async {
     iOS: null,
     macOS: null,
   );
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: (String? a) {});
+  await flutterLocalNotificationsPlugin.initialize(
+    initializationSettings,
+  );
 
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -85,7 +87,17 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  runApp(const MyAppRun());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ConCatigoryProvider()),
+        ChangeNotifierProvider(create: (_) => getGiftsProvider()),
+        ChangeNotifierProvider(create: (_) => getConcursProvider()),
+        ChangeNotifierProvider(create: (_) => getConcursByIDProvider()),
+      ],
+      child: const MyAppRun(),
+    ),
+  );
 }
 
 class MyAppRun extends StatefulWidget {
@@ -110,7 +122,7 @@ class _MyAppRunState extends State<MyAppRun> {
           android: AndroidNotificationDetails(
             channel.id,
             channel.name,
-            channelDescription: channel.description,
+            channel.description,
             styleInformation: const BigTextStyleInformation(''),
             color: Colors.white,
             icon: '@mipmap/ic_launcher',

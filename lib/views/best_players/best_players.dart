@@ -117,7 +117,7 @@ class BestPlayers extends StatelessWidget {
           ),
           const Divider(
             color: Colors.white,
-          ),
+          )
         ],
       ),
     );
@@ -151,7 +151,7 @@ class BestPlayers extends StatelessWidget {
                     child: Html(
                       data: text2.tr,
                       style: {
-                        'body': Style(fontFamily: josefinSansMedium, fontSize: const FontSize(20.0), textAlign: TextAlign.left),
+                        'body': Style(fontFamily: josefinSansMedium, fontSize: FontSize(20.0), textAlign: TextAlign.left),
                       },
                     ),
                   ),
