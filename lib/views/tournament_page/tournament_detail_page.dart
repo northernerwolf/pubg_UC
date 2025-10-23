@@ -214,6 +214,7 @@ class _TournamentDetailPageState extends State<TournamentDetailPage> {
                                       teamMember: member,
                                     ),
                                   );
+                                  
                                 } else {
                                   Get.to(
                                     () => TeamRegistrationScreenDetail(

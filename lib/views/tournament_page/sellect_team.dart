@@ -116,16 +116,16 @@ class _SellctTeamState extends State<SellctTeam> {
                   titleStyle: const TextStyle(color: Colors.white, fontFamily: josefinSansSemiBold, fontSize: 23),
                   content: Column(
                     children: [
-                      AgreeButton(
-                        onTap: () {
-                          // Uri.parse('$serverURL/api/turnirs/participate/'),
-                          TournamentModel().participateTournamentPost(teamId: selectedTeam).then((value) {
-                            // ignore: unnecessary_statements
-                            value == 200 ? backTurnir() : null;
-                          });
-                        },
-                        name: 'buySQUAD1',
-                      ),
+                      // AgreeButton(
+                      //   onTap: () {
+                      //     // Uri.parse('$serverURL/api/turnirs/participate/'),
+                      //     TournamentModel().participateTournamentPost(teamId: selectedTeam).then((value) {
+                      //       // ignore: unnecessary_statements
+                      //       value == 200 ? backTurnir() : null;
+                      //     });
+                      //   },
+                      //   name: 'buySQUAD1',
+                      // ),
                       AgreeButton(
                         onTap: () {
                           enterSQUADIDS();
@@ -156,7 +156,7 @@ class _SellctTeamState extends State<SellctTeam> {
           return Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: CardTeansAll(
+            child: CardTeamsAll(
               teams: widget.turnir.teams![index],
               selectedTeam: selectedTeam,
               selectTeam: (int id) {
