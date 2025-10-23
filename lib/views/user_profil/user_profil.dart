@@ -85,7 +85,7 @@ class _UserProfilState extends State<UserProfil> {
                           Get.to(
                             () => ProfileSettings(
                               medata: data,
-                              image: data.bgImage ?? '', // ✅ Safe null check
+                              image: data.image ?? '', // ✅ Safe null check
                             ),
                           );
                         },
