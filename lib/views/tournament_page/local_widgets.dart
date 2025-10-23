@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:game_app/views/best_players/best_players.dart';
 import 'package:game_app/views/tournament_page/sellect_team.dart';
 import 'package:game_app/views/tournament_page/tournament.dart';
 
@@ -12,12 +13,14 @@ import '../constants/index.dart';
 
 final List names = [
   'Turnir',
-  'Squad',
+  'Lobbi',
+  'bestPlayers2'.tr,
 ];
 
 final List images = [
-  'assets/image/1.png',
-  'assets/image/3.png',
+  'assets/image/img1.jpg',
+  'assets/image/img2.jpg',
+  'assets/image/img3.jpg',
 ];
 // 'Duo',
 // 'assets/image/2.png',
@@ -25,15 +28,19 @@ final List images = [
 dynamic tournamentCard(int index) {
   return GestureDetector(
     onTap: () {
-      
-      Get.to(
-        () => TournamentPage(
-          tournamentType: index + 1,
-        ),
-      );
+      index == 2
+          ? Get.to(
+              () => const BestPlayers(),
+            )
+          : Get.to(
+              () => TournamentPage(
+                tournamentType: index + 1,
+              ),
+            );
     },
     child: Container(
       width: Get.size.width,
+      height: index == 2 ? 150 : 150,
       margin: const EdgeInsets.only(top: 15, bottom: 5, right: 12, left: 12),
       decoration: BoxDecoration(color: kPrimaryColorBlack, borderRadius: borderRadius30, border: Border.all(color: kPrimaryColorBlack1)),
       child: Stack(
@@ -55,7 +62,7 @@ dynamic tournamentCard(int index) {
             alignment: Alignment.center,
             child: Padding(
               padding: const EdgeInsets.only(left: 15),
-              child: Text(names[index], textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontFamily: josefinSansBold, fontSize: 50)),
+              child: Text(names[index], textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontFamily: josefinSansBold, fontSize: 40)),
             ),
           ),
         ],
@@ -81,12 +88,12 @@ TabBar tabbar() {
       Tab(
         text: 'endTournament'.tr,
       ),
-      Tab(
-        text: 'Pol Final',
-      ),
-      Tab(
-        text: 'Final',
-      ),
+      // Tab(
+      //   text: 'Pol Final',
+      // ),
+      // Tab(
+      //   text: 'Final',
+      // ),
     ],
   );
 }

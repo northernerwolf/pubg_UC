@@ -108,6 +108,21 @@ class AddAccountModel extends GetxController {
     }
   }
 
+  Future getConstsNum() async {
+    final response = await http.get(
+      Uri.parse('$serverURL/api/about/nomerler/'),
+      headers: <String, String>{
+        HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+      },
+    );
+    if (response.statusCode == 200) {
+      final decoded = utf8.decode(response.bodyBytes);
+      return json.decode(decoded);
+    } else {
+      return false;
+    }
+  }
+
   Future deleteVideo({
     required int id,
   }) async {

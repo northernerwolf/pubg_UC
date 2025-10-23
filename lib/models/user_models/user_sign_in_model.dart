@@ -142,6 +142,96 @@ class UserSignInModel {
   }
 }
 
+class QuartTurnir {
+  final String? name;
+  final String? startDate;
+  final String? finishDate;
+  final String? lobbiId;
+
+  QuartTurnir({
+    this.name,
+    this.startDate,
+    this.finishDate,
+    this.lobbiId,
+  });
+
+  factory QuartTurnir.fromJson(Map<String, dynamic> json) {
+    return QuartTurnir(
+      name: json['name'],
+      startDate: json['start_date'],
+      finishDate: json['finish_date'],
+      lobbiId: json['lobbi_id'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'start_date': startDate,
+      'finish_date': finishDate,
+      'lobbi_id': lobbiId,
+    };
+  }
+}
+
+class UserTeam {
+  final int id;
+  final String? name;
+  final String? account;
+  final String? user1;
+  final String? user2;
+  final String? user3;
+  final QuartTurnir? quartturnir;
+  final dynamic halfturnir;
+  final dynamic finalturnir;
+  final dynamic winnerturnir;
+
+  UserTeam({
+    required this.id,
+    this.name,
+    this.account,
+    this.user1,
+    this.user2,
+    this.user3,
+    this.quartturnir,
+    this.halfturnir,
+    this.finalturnir,
+    this.winnerturnir,
+  });
+
+  factory UserTeam.fromJson(Map<String, dynamic> json) {
+    return UserTeam(
+      id: json['id'] ?? 0,
+      name: json['name'],
+      account: json['account'],
+      user1: json['user_1'],
+      user2: json['user_2'],
+      user3: json['user_3'],
+      quartturnir: json['quartturnir'] != null
+          ? QuartTurnir.fromJson(json['quartturnir'])
+          : null,
+      halfturnir: json['halfturnir'],
+      finalturnir: json['finalturnir'],
+      winnerturnir: json['winnerturnir'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'account': account,
+      'user_1': user1,
+      'user_2': user2,
+      'user_3': user3,
+      'quartturnir': quartturnir?.toJson(),
+      'halfturnir': halfturnir,
+      'finalturnir': finalturnir,
+      'winnerturnir': winnerturnir,
+    };
+  }
+}
+
 class GetMeModel {
   final String? bgImage;
   final String? bio;
@@ -167,6 +257,7 @@ class GetMeModel {
   final bool? blocked;
   final String? ref_code;
   final String? used_ref_code;
+  final List<UserTeam>? teams;
   GetMeModel({
     this.id,
     this.pubgType,
@@ -192,6 +283,7 @@ class GetMeModel {
     this.updatedDate,
     this.ref_code,
     this.used_ref_code,
+    this.teams,
   });
 
   factory GetMeModel.fromJson(Map<dynamic, dynamic> json) {
@@ -220,34 +312,11 @@ class GetMeModel {
       price: json['price'] ?? 'null',
       pubgId: json['pubg_id'] ?? 'null',
       updatedDate: json['updated_date'] ?? 'null',
+      teams: (json['teams'] as List<dynamic>?)?.map((e) => UserTeam.fromJson(e)).toList() ?? [],
     );
   }
 
-  // Map<String, dynamic> toJson() => {
-  //       'id': id,
-  //       'pubgType': pubgType,
-  //       'lastName': lastName,
-  //       'verified': verified,
-  //       'forSale': forSale,
-  //       'bgImage': bgImage,
-  //       'bio': bio,
-  //       'createdDate': createdDate,
-  //       'email': email,
-  //       'vip': vip,
-  //       'user': user,
-  //       'location': location,
-  //       'firstName': firstName,
-  //       'image': image,
-  //       'nickname': nickname,
-  //       'phone': phone,
-  //       'points': points,
-  //       'used_ref_code': used_ref_code,
-  //       'ref_code': ref_code,
-  //       'pointsFromTurnir': pointsFromTurnir,
-  //       'price': price,
-  //       'pubgId': pubgId,
-  //       'updatedDate': updatedDate,
-  //     };
+  
 
   Future<GetMeModel> getMe() async {
     final token = await Auth().getToken();
