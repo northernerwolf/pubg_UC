@@ -142,7 +142,11 @@ class _TournamentDetailPageState extends State<TournamentDetailPage> {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            '${formatDate(widget.members.quartturnir?.startDate)} - ${formatDate(widget.members.quartturnir?.finishDate)}',
+                            widget.filter == 'yarym_final'
+                                ? formatDate(widget.members.halfturnir?.startDate)
+                                : widget.filter == 'final'
+                                    ? formatDate(widget.members.finalturnir?.startDate)
+                                    : formatDate(widget.members.quartturnir?.startDate),
                             style: const TextStyle(fontSize: 14, color: Colors.white),
                           ),
                           const SizedBox(width: 10),
@@ -153,7 +157,11 @@ class _TournamentDetailPageState extends State<TournamentDetailPage> {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            '${formatTime(widget.members.quartturnir?.startDate)} - ${formatTime(widget.members.quartturnir?.finishDate)}',
+                            widget.filter == 'yarym_final'
+                                ? '${formatTime(widget.members.halfturnir?.startDate)} - ${formatTime(widget.members.halfturnir?.finishDate)}'
+                                : widget.filter == 'final'
+                                    ? '${formatTime(widget.members.finalturnir?.startDate)} - ${formatTime(widget.members.finalturnir?.finishDate)}'
+                                    : '${formatTime(widget.members.quartturnir?.startDate)} - ${formatTime(widget.members.quartturnir?.finishDate)}',
                             style: const TextStyle(fontSize: 14, color: Colors.white),
                           ),
                         ],

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:game_app/models/team_member.dart';
 import 'package:game_app/models/turnir.dart';
@@ -235,6 +234,16 @@ class QuarterGroupCard extends StatelessWidget {
     }
   }
 
+  String formatDate(String? dateTimeString) {
+    if (dateTimeString == null) return '—';
+    try {
+      final dt = DateTime.parse(dateTimeString).toLocal();
+      return DateFormat('dd.MM.yyyy').format(dt);
+    } catch (_) {
+      return '—';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = [
@@ -252,15 +261,20 @@ class QuarterGroupCard extends StatelessWidget {
     final color = colors[colorIndex % colors.length];
     final String start;
     final String finish;
+    final String dataDay;
+
     if (filter == 'yarym_final') {
       start = formatTime(member.halfturnir?.startDate);
       finish = formatTime(member.halfturnir?.finishDate);
+      dataDay = formatDate(member.halfturnir?.startDate);
     } else if (filter == 'final') {
       start = formatTime(member.finalturnir?.startDate);
       finish = formatTime(member.finalturnir?.finishDate);
+      dataDay = formatDate(member.finalturnir?.startDate);
     } else {
       start = formatTime(member.quartturnir?.startDate);
       finish = formatTime(member.quartturnir?.finishDate);
+      dataDay = formatDate(member.quartturnir?.startDate);
     }
 
     return GestureDetector(
@@ -343,10 +357,20 @@ class QuarterGroupCard extends StatelessWidget {
                   // Start Time
                   Row(
                     children: [
+                      Icon(Icons.calendar_month, size: 14, color: Colors.grey[400]),
+                      const SizedBox(width: 4),
+                      Text(
+                        dataDay,
+                        style: TextStyle(color: Colors.grey[400], fontSize: 12),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
                       Icon(Icons.play_arrow, size: 14, color: Colors.grey[400]),
                       const SizedBox(width: 4),
                       Text(
-                        'Start: $start',
+                        'Açyldy: $start',
                         style: TextStyle(color: Colors.grey[400], fontSize: 12),
                       ),
                     ],
@@ -359,7 +383,7 @@ class QuarterGroupCard extends StatelessWidget {
                       Icon(Icons.flag, size: 14, color: Colors.grey[400]),
                       const SizedBox(width: 4),
                       Text(
-                        'Finish: $finish',
+                        'Başlanýar: $finish',
                         style: TextStyle(color: Colors.grey[400], fontSize: 12),
                       ),
                     ],
