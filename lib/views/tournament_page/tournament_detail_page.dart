@@ -30,14 +30,14 @@ class _TournamentDetailPageState extends State<TournamentDetailPage> {
 
     widget.filter == 'yarym_final'
         ? Future.microtask(() {
-            Provider.of<TeamMembersProvider>(context, listen: false).fetchTeamHalf(widget.groupName == 'B2' ? 'ikinji' : 'birinji');
+            Provider.of<TeamMembersProvider>(context, listen: false).fetchTeamHalf(widget.groupName == 'B2' ? 'ikinji' : 'birinji', widget.tournament.id);
           })
         : widget.filter == 'final'
             ? Future.microtask(() {
-                Provider.of<TeamMembersProvider>(context, listen: false).fetchTeamFinal();
+                Provider.of<TeamMembersProvider>(context, listen: false).fetchTeamFinal(widget.tournament.id);
               })
             : Future.microtask(() {
-                Provider.of<TeamMembersProvider>(context, listen: false).fetchTeamGroup(widget.groupName);
+                Provider.of<TeamMembersProvider>(context, listen: false).fetchTeamGroup( widget.groupName, widget.tournament.id);
               });
   }
 

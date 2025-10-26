@@ -333,8 +333,16 @@ class MyTranslations extends Translations {
           'Show Code': 'Kody görkez',
           'Transfer History': 'Geçiriş taryhy',
           'Owner': 'Team döredijisi',
+          '🏆 Winners': '🏆 Ýeňijiler',
+          'No Winners Yet': 'Heniz ýeňiji ýok',
+          'Winners will be announced soon': 'Ýeňijiler tiz wagtda yglan ediler',
+
+          
         },
         'ru': {
+          'No Winners Yet': 'Победителей пока нет' ,
+          'Winners will be announced soon': 'Победители будут объявлены в ближайшее время',
+          '🏆 Winners':'🏆 Победители',
           'qarterFinals': 'Четверть финал',
           'noGroupsFound': 'Группы не найдены',
           'group': 'Группа ',

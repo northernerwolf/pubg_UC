@@ -51,6 +51,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 
   dynamic getData() async {
     int a = 0;
+    
     GetMeModel().getMe();
     await AboutUsModel().getAboutUs().then((value) {
       print(value);
@@ -170,6 +171,9 @@ class _ProfileSettingsState extends State<ProfileSettings> {
     settingsController.agreeButton.value = false;
 
     if (response.statusCode == 200) {
+        setState(() {
+           getData();
+        });
       showSnackBar('copySucces', 'changedData', Colors.green);
       getData();
       pubgNameController.clear();
@@ -438,7 +442,9 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                           Get.find<SettingsController>().agreeButton.value = !Get.find<SettingsController>().agreeButton.value;
                           GetMeModel().shortUpdate(pubgUserId: pubgIDController.text, pubgUserName: pubgNameController.text).then((value) {
                             if (value == 200) {
+                              getData();
                               Get.back();
+                              
                               showSnackBar('copySucces', 'changedData', Colors.green);
                               pubgNameController.clear();
                               pubgIDController.clear();

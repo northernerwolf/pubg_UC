@@ -23,10 +23,10 @@ class _QuarterGroupsScreenState extends State<QuarterGroupsScreen> {
   void initState() {
     super.initState();
     // widget.filter == 'tournament'
-         Future.microtask(() {
-            Provider.of<TeamMembersProvider>(context, listen: false).fetchTeamMembers(widget.tournament.id);
-          });
-        // : null;
+    Future.microtask(() {
+      Provider.of<TeamMembersProvider>(context, listen: false).fetchTeamMembers(widget.tournament.id);
+    });
+    // : null;
   }
 
   @override
@@ -43,7 +43,11 @@ class _QuarterGroupsScreenState extends State<QuarterGroupsScreen> {
           onPressed: () => Get.back(),
         ),
         title: Text(
-          'qarterFinals'.tr,
+          widget.filter == 'final'
+              ? 'final_tournament'.tr
+              : widget.filter == 'yarym_final'
+                  ? 'pol_final'.tr
+                  : 'qarterFinals'.tr,
           style: const TextStyle(
             fontFamily: josefinSansSemiBold,
             fontSize: 20,
@@ -126,8 +130,13 @@ class _QuarterGroupsScreenState extends State<QuarterGroupsScreen> {
                             // final teams = ['B1', 'B2'];
                             // final groupName = teams[index];
 
-                            return QuarterGroupCard(filter: widget.filter, groupName: 'F1', teamCount: 25, 
-                            tournament: widget.tournament, members: provider.teamMembers[index]);
+                            return QuarterGroupCard(
+                              filter: widget.filter,
+                              groupName: 'F1',
+                              teamCount: 25,
+                              tournament: widget.tournament,
+                              members: provider.teamMembers[index],
+                            );
                           },
                         ),
                       if (widget.filter == 'yarym_final')
@@ -139,9 +148,13 @@ class _QuarterGroupsScreenState extends State<QuarterGroupsScreen> {
                             final teams = ['B1', 'B2'];
                             final groupName = teams[index];
 
-                            return QuarterGroupCard(filter: widget.filter, groupName: groupName, 
-                            teamCount: 25, tournament: widget.tournament,
-                             members: provider.teamMembers[index]);
+                            return QuarterGroupCard(
+                              filter: widget.filter,
+                              groupName: groupName,
+                              teamCount: 25,
+                              tournament: widget.tournament,
+                              members: provider.teamMembers[index],
+                            );
                           },
                         ),
 
@@ -166,10 +179,13 @@ class _QuarterGroupsScreenState extends State<QuarterGroupsScreen> {
                               final groupName = sortedGroups[index];
                               final teams = groupedTeams[groupName]!;
 
-                              return QuarterGroupCard(filter: widget.filter, 
-                              groupName: groupName, teamCount: teams.length,
-                               tournament: widget.tournament,
-                                members: provider.teamMembers[index]);
+                              return QuarterGroupCard(
+                                filter: widget.filter,
+                                groupName: groupName,
+                                teamCount: teams.length,
+                                tournament: widget.tournament,
+                                members: provider.teamMembers[index],
+                              );
                             },
                           ),
                     ],
@@ -231,7 +247,7 @@ class QuarterGroupCard extends StatelessWidget {
             filter: filter,
             tournament: tournament,
             groupName: groupName,
-            members: members
+            members: members,
           ),
         );
       },
